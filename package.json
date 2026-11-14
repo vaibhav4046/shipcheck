@@ -1,0 +1,9 @@
+{
+  "name": "shipcheck",
+  "version": "0.1.0",
+  "description": "Paste a URL, say what should work. Shipcheck verifies it with Kane CLI, reads the failure, and loops until green.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node run.mjs" },
+  "license": "MIT"
+}
