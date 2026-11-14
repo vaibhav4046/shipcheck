@@ -3,13 +3,13 @@ const timeline = $('#timeline');
 function add(kind, title, body, link) {
   const div = document.createElement('div');
   div.className = 'ev ' + kind;
-  div.innerHTML = `<small>${title}</small>${body || ''}` + (link ? ` <a href="${link}" target="_blank" rel="noopener">evidence â</a>` : '');
+  div.innerHTML = `<small>${title}</small>${body || ''}` + (link ? ` <a href="${link}" target="_blank" rel="noopener">evidence ↗</a>` : '');
   timeline.appendChild(div);
   div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 $('#go').addEventListener('click', () => {
   timeline.innerHTML = ''; $('#report').classList.add('hidden');
-  const btn = $('#go'); btn.disabled = true; btn.textContent = 'Verifyingâ¦';
+  const btn = $('#go'); btn.disabled = true; btn.textContent = 'Verifying…';
   fetch('/api/verify', { method: 'POST', headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ targetUrl: $('#url').value.trim(), objective: $('#objective').value.trim() }) })
     .then(async res => {
@@ -30,12 +30,12 @@ $('#go').addEventListener('click', () => {
 });
 function handle(ev, d) {
   if (ev === 'attempt') add('attempt', `attempt ${d.attempt}`, escapeHtml(d.objective));
-  else if (ev === 'kane' && d.type === 'step') add('', `kane Â· step ${d.step}`, escapeHtml(d.remark));
-  else if (ev === 'run_end') add(d.status === 'passed' ? 'passed' : 'failed', `kane Â· ${d.status}`, escapeHtml(d.summary || ''), d.testUrl);
-  else if (ev === 'agent') add('agent', 'agent decision', escapeHtml(d.action === 'retry' ? d.reason + ' â ' + d.objective : 'writing bug report'));
+  else if (ev === 'kane' && d.type === 'step') add('', `kane · step ${d.step}`, escapeHtml(d.remark));
+  else if (ev === 'run_end') add(d.status === 'passed' ? 'passed' : 'failed', `kane · ${d.status}`, escapeHtml(d.summary || ''), d.testUrl);
+  else if (ev === 'agent') add('agent', 'agent decision', escapeHtml(d.action === 'retry' ? d.reason + ' → ' + d.objective : 'writing bug report'));
   else if (ev === 'error') add('failed', 'error', escapeHtml(d.message));
   else if (ev === 'done') {
-    if (d.ok) add('passed', 'verified â', `green after ${d.attempts} attempt(s)`);
+    if (d.ok) add('passed', 'verified ✓', `green after ${d.attempts} attempt(s)`);
     else if (d.report) showReport(d.report);
   }
 }
