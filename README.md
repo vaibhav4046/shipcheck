@@ -67,3 +67,4 @@ Save -> Kane runs -> fail -> agent edits -> save -> Kane runs -> green.
 ## Disclosure
 
 Built with an AI coding agent during the hackathon window (repo initialized 14 Nov 2026). Kane CLI is the only required dependency. MIT licensed.
+
