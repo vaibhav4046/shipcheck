@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipcheck - recorded run replay</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>Shipcheck</h1>
+  <p class="tag">This is a <strong>recorded replay</strong> of real Shipcheck runs (14 Nov 2026, GMT), streamed back exactly as the app emitted them. Nothing is simulated - the evidence links open the actual Kane CLI run pages on TestMu AI. To run live against your own site, use <code>node run.mjs</code> from the repo.</p>
+</header>
+<main>
+  <section class="card">
+    <button id="play-pass">Replay: green run (example.com heading check, 1 attempt)</button>
+    <button id="play-fail">Replay: the agent loop (pricing check, 3 attempts, retries, bug report)</button>
+  </section>
+  <section id="timeline" class="timeline" aria-live="polite"></section>
+  <section id="report" class="report hidden"></section>
+</main>
+<footer>Replay of recorded real runs. Source: <a href="https://github.com/vaibhav4046/shipcheck">github.com/vaibhav4046/shipcheck</a></footer>
+<script src="/replay-data.js"></script>
+<script src="/replay.js"></script>
+</body>
+</html>
