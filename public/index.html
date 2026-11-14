@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipcheck - say what should work, watch it get verified</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>Shipcheck</h1>
+  <p class="tag">Paste a URL. Say what should work. An agent verifies it with Kane CLI, reads the failure, and loops until green - or writes the bug report for you.</p>
+</header>
+<main>
+  <section class="card">
+    <label>Site URL <input id="url" type="url" placeholder="https://your-app.com" value="https://ecommerce-playground.lambdatest.io"></label>
+    <label>What should work? <textarea id="objective" rows="2" placeholder="Add one iPhone to the cart and verify the cart shows 1 item">Add one iPhone to the cart, then verify the cart shows 1 item</textarea></label>
+    <button id="go">Verify it</button>
+  </section>
+  <section id="timeline" class="timeline" aria-live="polite"></section>
+  <section id="report" class="report hidden"></section>
+</main>
+<footer>Runs Kane CLI locally on your machine. No selectors, no framework - plain English in, evidence-backed pass/fail out.</footer>
+<script src="/app.js"></script>
+</body>
+</html>
