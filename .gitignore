@@ -1,0 +1,4 @@
+node_modules/
+.testmuai/
+*.log
+.DS_Store
